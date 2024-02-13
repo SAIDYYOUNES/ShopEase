@@ -1,9 +1,21 @@
 import React from 'react'
 import { Text, Image, StyleSheet, ScrollView, View, TouchableOpacity, Pressable } from 'react-native'
+import { add } from '../Redux/Cart/actions';
+import { useDispatch ,useSelector } from 'react-redux';
 
 
 export default function Course({ route }) {
+    const {items} = useSelector(state => state.cart)
+    const dispatch = useDispatch();
     const { Course } = route.params;
+    const addItem = () => {
+        if (items.includes(Course)) {
+            alert('Course already in cart')
+            return
+        }
+        dispatch(add(Course))
+        alert('Course added to cart')
+    }
 
     return (
         <>
@@ -17,8 +29,7 @@ export default function Course({ route }) {
                     <Text style={styles.price}>{Course.price}£</Text>
                 </View>
                 <View style={{ backgroundColor: 'green', width: '100%', alignItems: 'flex-end', paddingRight: 30, paddingTop: 20 ,paddingBottom:8 }}>
-                    <Pressable>
-
+                    <Pressable onPress={() => addItem()} disabled={items.includes(Course)}>
                         <Text style={{ textAlign: 'center', padding: 10, backgroundColor: 'yellow', width: 100, borderRadius: 10 }}>Add to Cart</Text>
                     </Pressable>
                 </View>
