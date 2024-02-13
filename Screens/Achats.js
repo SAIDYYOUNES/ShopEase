@@ -4,6 +4,7 @@ import COURSES from '../Data/Courses'
 import PaymentRecord from '../Components/PayementRecord'
 import { useSelector } from 'react-redux'
 export default function Achats() {
+  
   const {payements} = useSelector(state => state.payement)
   return (
     <View style={{

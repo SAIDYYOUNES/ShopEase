@@ -5,7 +5,9 @@ import { useSelector } from 'react-redux'
 
 export default function Catalogue() {
     const {courses} = useSelector(state => state.course)
+
     const {items} = useSelector(state => state.cart)
+    
     const Courses = courses.filter(course => !items.includes(course))
     const renderSeparator = () => {
         return <View style={{ height: 40 }} />;

@@ -5,7 +5,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { addPayement } from '../Redux/payement/actions'
 import { clear } from '../Redux/Cart/actions'
 export default function Panier() {
+
   const { items, totalAmount } = useSelector(state => state.cart)
+  
   const dispatch = useDispatch();
   function paye() {
     if (items.length == 0) {
